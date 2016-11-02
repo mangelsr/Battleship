@@ -9,19 +9,12 @@ package Elementos;
  *
  * @author Usuario
  */
-public class Battleship extends Barco{
-
-    public Battleship(Punto coordenadaInicial,Mar tablero) {
-        this.coordenadaInicial = coordenadaInicial;
-        this.tablero = tablero;
+public class Battleship extends Barco
+{
+    
+    public Battleship()
+    {
         this.numeroDeCasillas = 4;
     }
-    
-    
-    @Override
-    public void ubicar(Mar tablero, Punto p)
-    {
-        
-    }
-    
+   
 }

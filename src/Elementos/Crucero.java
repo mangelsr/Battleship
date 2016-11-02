@@ -12,17 +12,9 @@ package Elementos;
 public class Crucero extends Barco
 {
     
-    public Crucero(Punto coordenadaInicial,Mar tablero)
+    public Crucero()
     {
-        this.coordenadaInicial = coordenadaInicial;
-        this.tablero = tablero;
-        this.numeroDeCasillas = 3; //verificar
-    }
-
-   @Override
-    public void ubicar(Mar tablero, Punto p)
-    {
-        
+        this.numeroDeCasillas = 3;
     }
     
 }

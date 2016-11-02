@@ -12,17 +12,9 @@ package Elementos;
 public class Submarino extends Barco
 {
 
-    public Submarino(Punto coordenadaInicial,Mar tablero) {
-        this.coordenadaInicial = coordenadaInicial;
-        this.tablero = tablero;
-        this.numeroDeCasillas = 1; //verificar
-    }
-    
-    
-    @Override
-    public void ubicar(Mar tablero, Punto p)
+    public Submarino()
     {
-        
+        this.numeroDeCasillas = 1;
     }
     
 }

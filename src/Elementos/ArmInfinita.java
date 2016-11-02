@@ -11,9 +11,9 @@ package Elementos;
  */
 public class ArmInfinita extends Arma{
 
-    public ArmInfinita() {
+    public ArmInfinita()
+    {
         this.rangoDisparo = 1;
-        this.numeroMuniciones = 9999;
     }
 
     @Override

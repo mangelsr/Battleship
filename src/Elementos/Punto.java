@@ -11,8 +11,8 @@ package Elementos;
  */
 public class Punto
 {
-    private int coorX;
-    private int coorY;
+    protected int coorX;
+    protected int coorY;
 
     public Punto(int coorX, int coorY)
     {

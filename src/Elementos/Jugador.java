@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Elementos;
+
 import java.util.Random;
 
 /**
@@ -13,37 +14,53 @@ import java.util.Random;
  */
 public class Jugador
 {
-    private final Mar mar;
+    private final Tablero t;
     private final String nombre;
     private final int barcoDisponibles = 5;
     private final Barco[] barcos = new Barco[5];
-    private Punto p;
     
     private final Random rd = new Random();
             
     public Jugador(String nombre)
     {
-        this.mar = new Mar();
+        this.t = new Tablero();
         this.nombre = nombre;
+        this.crearBarcos();
         this.ubicarBarcos();
         
     }
   
-    public void ubicarBarcos(){
-        p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new Battleship(p, mar);
-        
-        p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new Crucero(p, mar);
-        
-        p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new Destructor(p, mar);
-        
-        p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new Submarino(p, mar);
-        
-        //Falta el barco aleatoriio
-        
+    public void crearBarcos(){
+        barcos[0] = new Battleship();
+        barcos[1] = new Crucero();
+        barcos[2] = new Destructor();
+        barcos[3] = new Submarino();
+        int x = rd.nextInt(4)+1;
+        switch(x)
+        {
+            case 1:
+                barcos[4] = new Battleship();
+                break;
+                
+            case 2:
+                barcos[4] = new Crucero();
+                break;
+                
+            case 3:
+                barcos[4] = new Destructor();
+                break;
+            case 4:
+                barcos[4] = new Submarino();
+                break;
+        }
+    }
+    
+    public void ubicarBarcos()
+    {
+        for (int i=0; i <=4; i++)
+        {
+            t.ubicarBarco(barcos[i]);
+        }
     }
     
     /**
@@ -53,6 +70,6 @@ public class Jugador
     public void mostrarMar()
     {
         System.out.println("Mar de: " + this.nombre);
-        this.mar.imprimir();
+        this.t.imprimirTablero();
     }
 }

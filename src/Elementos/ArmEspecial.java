@@ -9,8 +9,10 @@ package Elementos;
  *
  * @author Administrador
  */
-public class ArmEspecial extends Arma {
-
+public class ArmEspecial extends Arma
+{
+    private int numeroMuniciones;
+    
     public ArmEspecial() {
         this.numeroMuniciones = 2;
         this.rangoDisparo = 9;

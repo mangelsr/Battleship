@@ -10,12 +10,8 @@ package Elementos;
  * @author Administrador
  */
 public abstract class Arma {
-    protected int numeroMuniciones;
     protected int rangoDisparo;
     
-    
     public abstract void disparar(Mar tablero, Punto p);
-    
-    
-    
+ 
 }

@@ -12,17 +12,9 @@ package Elementos;
 public class Destructor extends Barco
 {
     
-    public Destructor(Punto coordenadaInicial,Mar tablero)
+    public Destructor()
     {
-        this.coordenadaInicial = coordenadaInicial;
-        this.tablero = tablero;
-        this.numeroDeCasillas = 2; //verificar
-    }
-
-    @Override
-    public void ubicar(Mar tablero, Punto p)
-    {
-        
+        this.numeroDeCasillas = 2;
     }
     
 }
