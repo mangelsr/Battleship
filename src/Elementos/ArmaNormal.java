@@ -9,18 +9,11 @@ package Elementos;
  *
  * @author Administrador
  */
-public class ArmEspecial extends Arma
+public class ArmaNormal extends Arma
 {
-    private int numeroMuniciones;
-    
-    public ArmEspecial() {
-        this.numeroMuniciones = 2;
-        this.rangoDisparo = 9;
+    public ArmaNormal()
+    {
+        
     }
-    
-    public void disparar(Mar tablero,Punto p) {
-    
-    }
-    
     
 }

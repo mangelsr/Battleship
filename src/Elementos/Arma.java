@@ -9,9 +9,7 @@ package Elementos;
  *
  * @author Administrador
  */
-public abstract class Arma {
-    protected int rangoDisparo;
+public class Arma
+{
     
-    public abstract void disparar(Mar tablero, Punto p);
- 
 }

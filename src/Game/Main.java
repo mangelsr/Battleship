@@ -5,11 +5,13 @@
  */
 package Game;
 import Elementos.Jugador;
+import Elementos.Punto;
 import java.io.IOException;
 import java.util.Scanner;
 /**
  *
- * @author Usuario
+ * @author Miguel Sanchez
+ * @author Lucio Arias
  */
 public class Main {
     static Scanner entrada = new Scanner(System.in);
@@ -17,8 +19,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args)
+    {
         String op = "";
         
         while (!"4".equals(op))
@@ -45,8 +47,9 @@ public class Main {
                 Jugador jugador2 = new Jugador(nJugador2);
                 
                 jugador1.mostrarMar();
-                
                 jugador2.mostrarMar();
+                
+                jugar(jugador1, jugador2);
                 
             }
             
@@ -61,9 +64,81 @@ public class Main {
             }
             
             else
-                System.out.println("GG IZI");
+                System.out.println("Gracias por jugar");
         }
         
+    }
+    
+    public static void jugar(Jugador p1, Jugador p2)
+    {
+        while (p1.getpuedeJugar() && p2.getpuedeJugar())
+        {
+            turno(p1,p2);
+            turno(p2,p1);
+        }
+        
+    }
+    
+    public static void turno(Jugador p1, Jugador p2)
+    {
+        String op2= "";
+        int x,y;
+        
+        System.out.println("====== "+ p1.getnombre() +" ======");
+        System.out.println("1. Disparar arma normal");
+        System.out.println("2. Disparar arma especial");
+        
+        System.out.print("Que desea hacer: ");
+        op2 = entrada.next();
+        
+        while(!("1".equals(op2) || "2".equals(op2)))
+        {
+            System.err.println("Por favor ingrese una opcion valida");
+            System.out.print("Ingrese la opcion: ");
+            op2 = entrada.next();
+        }
+        
+        System.out.print("Ingrese las coordenas a atacar: ");
+        String coord = entrada.next();
+        
+        while (true)
+            {
+            try
+            {
+                String coords[] = coord.split(",");
+                x = Integer.parseInt(coords[0]);
+                y = Integer.parseInt(coords[1]);
+                if ((x<0 || x>10)&&(y<0 || y>10))
+                {
+                    System.err.println("Las coordenadas tienen rangos de 1 a 10");
+                    System.out.print("Ingrese las coordenas a atacar: ");
+                    coord = entrada.next();
+                }
+                break;
+            }
+            catch (Exception e)
+            {
+                System.err.println("Ingrese bien los datos ejemplo de formato x,y");
+                System.out.print("Ingrese las coordenas a atacar: ");
+                coord = entrada.next();
+            }
+        }
+
+        x -= 1;
+        y -= 1;
+        Punto p = new Punto(x,y);
+        
+        
+        if ("1".equals(op2))
+        {
+            //p1.disparonormal(p2.gettablero, p);
+            p2.actualizarFlota();
+        }
+        else
+        {
+            //p1.disparoespecial(p2.gettablero, p);
+            p2.actualizarFlota();
+        }
     }
     
     public static void imprimirMenu()

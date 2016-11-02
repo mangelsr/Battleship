@@ -12,12 +12,20 @@ import java.util.Random;
  * @author Miguel Sanchez
  * @author Lucio Arias
  */
-public class Jugador
+public final class Jugador
 {
-    private final Tablero t;
     private final String nombre;
-    private final int barcoDisponibles = 5;
+    private boolean puedeJugar;
+    
+    private final Tablero t;
+    
+    //private final ArmaNormal armnormal;
+    //private final ArmaEspecial armespecial;
+    
+    private int barcosDisponibles = 5;
+    
     private final Barco[] barcos = new Barco[5];
+    
     
     private final Random rd = new Random();
             
@@ -25,11 +33,35 @@ public class Jugador
     {
         this.t = new Tablero();
         this.nombre = nombre;
+        this.puedeJugar = true;
         this.crearBarcos();
         this.ubicarBarcos();
-        
     }
-  
+
+    public boolean getpuedeJugar() {
+        return puedeJugar;
+    }
+
+    public Tablero gettablero() {
+        return t;
+    }
+    
+    public String getnombre()
+    {
+        return this.nombre;
+    }
+    
+    public void actualizarFlota()
+    {
+        for (int i=0; i<=4; i++)
+        {
+            if (barcos[i].casillasAtacadas == barcos[i].numeroDeCasillas)
+                this.barcosDisponibles -= 1;
+        }
+        if (this.barcosDisponibles == 0)
+            this.puedeJugar = false;
+    }
+    
     public void crearBarcos(){
         barcos[0] = new Battleship();
         barcos[1] = new Crucero();
@@ -54,6 +86,7 @@ public class Jugador
                 break;
         }
     }
+    
     
     public void ubicarBarcos()
     {

@@ -15,6 +15,7 @@ public class Barco
 {
     protected Punto coordenadaInicial;
     protected int numeroDeCasillas;
+    protected int casillasAtacadas;
     protected int orientacion;
     
     private final Random rd = new Random();
@@ -26,8 +27,8 @@ public class Barco
      */
     public Barco()
     {
-        this.coordenadaInicial = new Punto(rd.nextInt(9), rd.nextInt(9));
-        this.orientacion = rd.nextInt(2); //Esta fallando este random!!
+        this.coordenadaInicial = new Punto(rd.nextInt(10), rd.nextInt(10));
+        this.orientacion = rd.nextInt(2);
     }
 
     

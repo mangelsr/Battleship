@@ -56,6 +56,8 @@ public class Tablero
             }
             System.out.println();
         }
+        System.out.println();
+        System.out.println();
     }
     
     /**
@@ -64,77 +66,83 @@ public class Tablero
      */
     
     
+    
     public void ubicarBarco(Barco b)
     {
-        int x = b.coordenadaInicial.coorX;
-        int y = b.coordenadaInicial.coorY;
-        int z = b.numeroDeCasillas;
-        boolean desubicado = true;
-        
         switch(b.orientacion)
         {
-            
-            case 0:
-                
-                do
+            case 0:       
+                while(true)
                 {
-                    algo2: try
+                    try
                     {
                         int valido = 0;
-                        for (int c=1; c<=y ;c++)
+                        for (int c=1; c<=b.numeroDeCasillas ;c++)
                         {
-                            if (tablero[x][y+c] == 0)
+                            if (tablero[b.coordenadaInicial.coorX]
+                                    [b.coordenadaInicial.coorY+c] == 0)
                                 valido += 1;
-                        }
-                        if (valido == z)
-                        {
-                            for (int c=1; c<=y ;c++)
+                            else
                             {
-                                tablero[x][y+c] = z;
+                                b.coordenadaInicial.coorX = rd.nextInt(10);
+                                b.coordenadaInicial.coorY = rd.nextInt(10);
                             }
                         }
-                        desubicado = false;
+                        if (valido == b.numeroDeCasillas)
+                        {
+                            for (int c=1; c<=b.numeroDeCasillas ;c++)
+                            {
+                                tablero[b.coordenadaInicial.coorX]
+                                        [b.coordenadaInicial.coorY+c] 
+                                        = b.numeroDeCasillas;
+                            }
+                            break;
+                        }
+                        
                     }
                     catch(Exception e)
                     {
-                        b.coordenadaInicial.coorX = rd.nextInt(9);
-                        b.coordenadaInicial.coorY = rd.nextInt(9);
-                        break algo2;
+                        b.coordenadaInicial.coorX = rd.nextInt(10);
+                        b.coordenadaInicial.coorY = rd.nextInt(10);
                     }
                 }
-                while(desubicado);
-                
+                break;
                 
             case 1:
-                do
+                while (true)
                 {
-                    algo: try
+                    try
                     {
                         int valido = 0;
-                        for (int c=1; c<=x ;c++)
+                        for (int c=1; c<=b.numeroDeCasillas ;c++)
                         {
-                            if (tablero[x+c][y] == 0)
+                            if (tablero[b.coordenadaInicial.coorX+c]
+                                    [b.coordenadaInicial.coorY] == 0)
                                 valido += 1;
-                        }
-                        if (valido == z)
-                        {
-                            for (int c=1; c<=x ;c++)
+                            else
                             {
-                                tablero[x+c][y] = z;
+                                b.coordenadaInicial.coorX = rd.nextInt(10);
+                                b.coordenadaInicial.coorY = rd.nextInt(10);
                             }
                         }
-                        desubicado = false;
+                        if (valido == b.numeroDeCasillas)
+                        {
+                            for (int c=1; c<=b.numeroDeCasillas ;c++)
+                            {
+                                tablero[b.coordenadaInicial.coorX+c]
+                                        [b.coordenadaInicial.coorY] = 
+                                        b.numeroDeCasillas;                    
+                            }
+                             break;
+                        }
 
                     }
                     catch(Exception e)
                     {
-                        b.coordenadaInicial.coorX = rd.nextInt(9);
-                        b.coordenadaInicial.coorY = rd.nextInt(9);
-                        break algo;
+                        b.coordenadaInicial.coorX = rd.nextInt(10);
+                        b.coordenadaInicial.coorY = rd.nextInt(10);
                     }
                 }
-                while (desubicado);
-                
                 break;
         }
     }
