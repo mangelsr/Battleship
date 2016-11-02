@@ -19,8 +19,9 @@ public class Battleship extends Barco{
     
     
     @Override
-    public void ubicar(Mar tablero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ubicar(Mar tablero, Punto p)
+    {
+        
     }
     
 }

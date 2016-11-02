@@ -9,10 +9,10 @@ package Elementos;
  *
  * @author Usuario
  */
-public class submarinos extends Barco
+public class Submarino extends Barco
 {
 
-    public submarinos(Punto coordenadaInicial,Mar tablero) {
+    public Submarino(Punto coordenadaInicial,Mar tablero) {
         this.coordenadaInicial = coordenadaInicial;
         this.tablero = tablero;
         this.numeroDeCasillas = 1; //verificar
@@ -20,10 +20,9 @@ public class submarinos extends Barco
     
     
     @Override
-    public void ubicar(Mar tablero)
+    public void ubicar(Mar tablero, Punto p)
     {
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

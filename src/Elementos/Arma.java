@@ -9,17 +9,12 @@ package Elementos;
  *
  * @author Administrador
  */
-public class ArmInfinita extends Arma{
-
-    public ArmInfinita() {
-        this.rangoDisparo = 1;
-        this.numeroMuniciones = 9999;
-    }
-
-    @Override
-    public void disparar(Mar tablero,Punto p) {
-                
-    }
+public abstract class Arma {
+    protected int numeroMuniciones;
+    protected int rangoDisparo;
+    
+    
+    public abstract void disparar(Mar tablero, Punto p);
     
     
     

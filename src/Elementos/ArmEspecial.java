@@ -9,7 +9,7 @@ package Elementos;
  *
  * @author Administrador
  */
-public class ArmEspecial extends Armas {
+public class ArmEspecial extends Arma {
 
     public ArmEspecial() {
         this.numeroMuniciones = 2;

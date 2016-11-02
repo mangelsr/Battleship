@@ -37,10 +37,10 @@ public class Jugador
         barcos[0] = new Crucero(p, mar);
         
         p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new destructores(p, mar);
+        barcos[0] = new Destructor(p, mar);
         
         p = new Punto(rd.nextInt(9), rd.nextInt(9));
-        barcos[0] = new submarinos(p, mar);
+        barcos[0] = new Submarino(p, mar);
         
         //Falta el barco aleatoriio
         

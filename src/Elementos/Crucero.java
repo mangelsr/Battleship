@@ -19,10 +19,10 @@ public class Crucero extends Barco
         this.numeroDeCasillas = 3; //verificar
     }
 
-    @Override
-    public void ubicar(Mar tablero) 
+   @Override
+    public void ubicar(Mar tablero, Punto p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

@@ -16,6 +16,6 @@ public abstract class Barco
     protected int numeroDeCasillas;
     protected Mar tablero;
 
-    public abstract void ubicar(Mar tablero);
+    public abstract void ubicar(Mar tablero, Punto p);
     
 }

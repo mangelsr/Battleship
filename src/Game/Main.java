@@ -6,7 +6,6 @@
 package Game;
 import Elementos.Jugador;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -48,7 +47,7 @@ public class Main {
                 jugador1.mostrarMar();
                 
                 jugador2.mostrarMar();
-                //mucho codigo...
+                
             }
             
             else if ("2".equals(op))

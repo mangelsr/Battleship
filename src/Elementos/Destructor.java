@@ -9,10 +9,10 @@ package Elementos;
  *
  * @author Usuario
  */
-public class destructores extends Barco
+public class Destructor extends Barco
 {
     
-    public destructores(Punto coordenadaInicial,Mar tablero)
+    public Destructor(Punto coordenadaInicial,Mar tablero)
     {
         this.coordenadaInicial = coordenadaInicial;
         this.tablero = tablero;
@@ -20,9 +20,9 @@ public class destructores extends Barco
     }
 
     @Override
-    public void ubicar(Mar tablero)
+    public void ubicar(Mar tablero, Punto p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
