@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Game;
+
 import Elementos.Jugador;
 import Elementos.Punto;
 import java.io.IOException;
@@ -13,12 +14,14 @@ import java.util.Scanner;
  * @author Miguel Sanchez
  * @author Lucio Arias
  */
-public class Main {
+public class Main
+{
     static Scanner entrada = new Scanner(System.in);
 
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args)
     {
         String op = "";
@@ -29,7 +32,7 @@ public class Main {
             System.out.print("Ingrese la opcion: ");
             op = entrada.next();
 
-            while(!("1".equals(op) || "2".equals(op) || "3".equals(op) || "4".equals(op)))
+            while(!(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")))
             {
                 System.err.println("Por favor ingrese una opcion valida");
                 System.out.print("Ingrese la opcion: ");
@@ -52,7 +55,6 @@ public class Main {
                 jugar(jugador1, jugador2);
                 
             }
-            
             else if ("2".equals(op))
             {
                 imprimirInstrucciones();
@@ -167,8 +169,7 @@ public class Main {
         System.out.println("Presione enter para regresar al menu...");
         try 
         {System.in.read();} 
-        catch (IOException e)
-        {e.printStackTrace();}
+        catch (IOException e){}
     }
     
 }

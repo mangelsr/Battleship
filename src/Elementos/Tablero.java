@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Tablero
 {
-    private int[][] tablero = new int[10][10];
+    private String[][] tablero = new String[10][10];
     private final Random rd = new Random();
     
     
@@ -28,7 +28,7 @@ public class Tablero
         {
             for(int j=0; j<=9; j++)
             {
-                tablero[i][j] = 0;
+                tablero[i][j] = "0";
             }
         }
     }
@@ -79,26 +79,31 @@ public class Tablero
                         int valido = 0;
                         for (int c=1; c<=b.numeroDeCasillas ;c++)
                         {
+                            if (tablero[b.coordenadaInicial.coorX-1]
+                                    [b.coordenadaInicial.coorY+c].equals("0"))
+                                valido += 1;
+                            if (tablero[b.coordenadaInicial.coorX+1]
+                                    [b.coordenadaInicial.coorY+c].equals("0"))
+                                valido += 1;
                             if (tablero[b.coordenadaInicial.coorX]
-                                    [b.coordenadaInicial.coorY+c] == 0)
+                                    [b.coordenadaInicial.coorY+c].equals("0"))
                                 valido += 1;
                             else
                             {
                                 b.coordenadaInicial.coorX = rd.nextInt(10);
                                 b.coordenadaInicial.coorY = rd.nextInt(10);
                             }
-                        }
-                        if (valido == b.numeroDeCasillas)
+                        }                                       
+                        if (valido == 3*b.numeroDeCasillas)
                         {
                             for (int c=1; c<=b.numeroDeCasillas ;c++)
                             {
                                 tablero[b.coordenadaInicial.coorX]
-                                        [b.coordenadaInicial.coorY+c] 
-                                        = b.numeroDeCasillas;
+                                        [b.coordenadaInicial.coorY+c] = 
+                                        "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";
                             }
                             break;
-                        }
-                        
+                        }                        
                     }
                     catch(Exception e)
                     {
@@ -117,7 +122,13 @@ public class Tablero
                         for (int c=1; c<=b.numeroDeCasillas ;c++)
                         {
                             if (tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY] == 0)
+                                    [b.coordenadaInicial.coorY-1].equals("0"))
+                                valido += 1;
+                            if (tablero[b.coordenadaInicial.coorX+c]
+                                    [b.coordenadaInicial.coorY+1].equals("0"))
+                                valido += 1;
+                            if (tablero[b.coordenadaInicial.coorX+c]
+                                    [b.coordenadaInicial.coorY].equals("0"))
                                 valido += 1;
                             else
                             {
@@ -125,17 +136,16 @@ public class Tablero
                                 b.coordenadaInicial.coorY = rd.nextInt(10);
                             }
                         }
-                        if (valido == b.numeroDeCasillas)
+                        if (valido == 3*b.numeroDeCasillas)
                         {
                             for (int c=1; c<=b.numeroDeCasillas ;c++)
                             {
                                 tablero[b.coordenadaInicial.coorX+c]
                                         [b.coordenadaInicial.coorY] = 
-                                        b.numeroDeCasillas;                    
+                                        "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";                    
                             }
                              break;
                         }
-
                     }
                     catch(Exception e)
                     {
