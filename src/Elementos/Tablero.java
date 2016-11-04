@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Tablero
 {
-    private String[][] tablero = new String[10][10];
+    protected String[][] tablero = new String[10][10];
     private final Random rd = new Random();
     
     
@@ -66,7 +66,6 @@ public class Tablero
      */
     
     
-    
     public void ubicarBarco(Barco b)
     {
         switch(b.orientacion)
@@ -77,33 +76,34 @@ public class Tablero
                     try
                     {
                         int valido = 0;
-                        for (int c=1; c<=b.numeroDeCasillas ;c++)
+                        for (int c=-1; c<=b.numeroDeCasillas ;c++)
                         {
                             if (tablero[b.coordenadaInicial.coorX-1]
-                                    [b.coordenadaInicial.coorY+c].equals("0"))
-                                valido += 1;
-                            if (tablero[b.coordenadaInicial.coorX+1]
-                                    [b.coordenadaInicial.coorY+c].equals("0"))
-                                valido += 1;
-                            if (tablero[b.coordenadaInicial.coorX]
+                                    [b.coordenadaInicial.coorY+c].equals("0") &&
+                                    tablero[b.coordenadaInicial.coorX+1]
+                                    [b.coordenadaInicial.coorY+c].equals("0") &&
+                                    tablero[b.coordenadaInicial.coorX]
                                     [b.coordenadaInicial.coorY+c].equals("0"))
                                 valido += 1;
                             else
-                            {
-                                b.coordenadaInicial.coorX = rd.nextInt(10);
-                                b.coordenadaInicial.coorY = rd.nextInt(10);
-                            }
-                        }                                       
-                        if (valido == 3*b.numeroDeCasillas)
+                                break;
+                        }
+                        if (valido == b.numeroDeCasillas+2)
                         {
-                            for (int c=1; c<=b.numeroDeCasillas ;c++)
+                            for (int c=0; c<b.numeroDeCasillas ;c++)
                             {
+                                int x = b.coordenadaInicial.coorX;
+                                int y = b.coordenadaInicial.coorY+c;
+                                Punto p = new Punto(x,y);
+                                b.coordenadas[c] = p;
                                 tablero[b.coordenadaInicial.coorX]
                                         [b.coordenadaInicial.coorY+c] = 
                                         "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";
                             }
                             break;
-                        }                        
+                        }
+                        b.coordenadaInicial.coorX = rd.nextInt(10);
+                        b.coordenadaInicial.coorY = rd.nextInt(10);
                     }
                     catch(Exception e)
                     {
@@ -119,33 +119,35 @@ public class Tablero
                     try
                     {
                         int valido = 0;
-                        for (int c=1; c<=b.numeroDeCasillas ;c++)
+                        for (int c=-1; c<=b.numeroDeCasillas ;c++)
                         {
+                            
                             if (tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY-1].equals("0"))
-                                valido += 1;
-                            if (tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY+1].equals("0"))
-                                valido += 1;
-                            if (tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY].equals("0"))
+                                    [b.coordenadaInicial.coorY-1].equals("0") &&
+                                    tablero[b.coordenadaInicial.coorX+c]
+                                    [b.coordenadaInicial.coorY+1].equals("0") &&
+                                    tablero[b.coordenadaInicial.coorX+c]
+                                    [b.coordenadaInicial.coorY].equals("0") )
                                 valido += 1;
                             else
-                            {
-                                b.coordenadaInicial.coorX = rd.nextInt(10);
-                                b.coordenadaInicial.coorY = rd.nextInt(10);
-                            }
+                                break;
                         }
-                        if (valido == 3*b.numeroDeCasillas)
+                        if (valido == b.numeroDeCasillas+2)
                         {
-                            for (int c=1; c<=b.numeroDeCasillas ;c++)
+                            for (int c=0; c<b.numeroDeCasillas ;c++)
                             {
+                                int x = b.coordenadaInicial.coorX+c;
+                                int y = b.coordenadaInicial.coorY;
+                                Punto p = new Punto(x,y);
+                                b.coordenadas[c] = p;
                                 tablero[b.coordenadaInicial.coorX+c]
                                         [b.coordenadaInicial.coorY] = 
                                         "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";                    
                             }
-                             break;
+                            break;
                         }
+                        b.coordenadaInicial.coorX = rd.nextInt(10);
+                        b.coordenadaInicial.coorY = rd.nextInt(10);
                     }
                     catch(Exception e)
                     {
@@ -156,5 +158,5 @@ public class Tablero
                 break;
         }
     }
-    
+
 }

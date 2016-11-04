@@ -16,4 +16,16 @@ public class ArmaNormal extends Arma
         
     }
     
+    public void disparar(Tablero t, Punto p)
+    {
+        if (t.tablero[p.coorX][p.coorY].equals("0"))
+        {
+            System.out.println("Disparo fallido");
+        }
+        else
+        {
+            t.tablero[p.coorX][p.coorY] = "\u001B[31m-\u001B[0m";
+        }
+    }
+    
 }

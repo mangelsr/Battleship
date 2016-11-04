@@ -19,8 +19,8 @@ public final class Jugador
     
     private final Tablero t;
     
-    //private final ArmaNormal armnormal;
-    //private final ArmaEspecial armespecial;
+    private final ArmaNormal armnormal;
+    private final ArmaEspecial armespecial;
     
     private int barcosDisponibles = 5;
     
@@ -31,9 +31,14 @@ public final class Jugador
             
     public Jugador(String nombre)
     {
-        this.t = new Tablero();
         this.nombre = nombre;
         this.puedeJugar = true;
+        
+        this.armnormal = new ArmaNormal();
+        this.armespecial = new ArmaEspecial();
+        
+        this.t = new Tablero();
+        
         this.crearBarcos();
         this.ubicarBarcos();
     }
@@ -42,7 +47,7 @@ public final class Jugador
         return puedeJugar;
     }
 
-    public Tablero gettablero() {
+    public Tablero getTablero() {
         return t;
     }
     
@@ -50,13 +55,27 @@ public final class Jugador
     {
         return this.nombre;
     }
-    
+
+    public ArmaNormal getArmnormal() {
+        return armnormal;
+    }
+
+    public ArmaEspecial getArmespecial() {
+        return armespecial;
+    }
+      
     public void actualizarFlota()
     {
         for (int i=0; i<=4; i++)
         {
-            if (barcos[i].casillasAtacadas == barcos[i].numeroDeCasillas)
-                this.barcosDisponibles -= 1;
+            if (! barcos[i].destruido)
+            {
+                barcos[i].verificarCasillasAtacadas(t);
+                if (barcos[i].destruido)
+                {
+                    barcosDisponibles -= 1;
+                }
+            }
         }
         if (this.barcosDisponibles == 0)
             this.puedeJugar = false;
@@ -87,7 +106,6 @@ public final class Jugador
         }
     }
     
-    
     public void ubicarBarcos()
     {
         for (int i=0; i <=4; i++)
@@ -104,5 +122,15 @@ public final class Jugador
     {
         System.out.println("Mar de: " + this.nombre);
         this.t.imprimirTablero();
+        System.out.println();
     }
+    
+    public void disparar(Arma a,Tablero t, Punto p)
+    {
+        if (a instanceof ArmaNormal)    
+            this.armnormal.disparar(t, p);
+        else
+            this.armespecial.disparar(t,p);
+    }
+    
 }

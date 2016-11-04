@@ -49,7 +49,7 @@ public class Main
                 String nJugador2 = entrada.next();
                 Jugador jugador2 = new Jugador(nJugador2);
                 
-                jugador1.mostrarMar();
+                jugador1.mostrarMar();               
                 jugador2.mostrarMar();
                 
                 jugar(jugador1, jugador2);
@@ -75,8 +75,23 @@ public class Main
     {
         while (p1.getpuedeJugar() && p2.getpuedeJugar())
         {
+            p1.mostrarMar();
             turno(p1,p2);
+            if (! p2.getpuedeJugar())
+            {
+                System.out.println("FIN DEL JUEGO");
+                System.out.println("El Ganador es: " + p1.getnombre());
+                break;
+            }
+            
+            p2.mostrarMar();
             turno(p2,p1);
+            if (! p1.getpuedeJugar())
+            {
+                System.out.println("FIN DEL JUEGO");
+                System.out.println("El Ganador es: " + p2.getnombre());
+                break;
+            }
         }
         
     }
@@ -110,13 +125,14 @@ public class Main
                 String coords[] = coord.split(",");
                 x = Integer.parseInt(coords[0]);
                 y = Integer.parseInt(coords[1]);
-                if ((x<0 || x>10)&&(y<0 || y>10))
+                if ((x<=0 || x>10)&&(y<=0 || y>10))
                 {
                     System.err.println("Las coordenadas tienen rangos de 1 a 10");
                     System.out.print("Ingrese las coordenas a atacar: ");
                     coord = entrada.next();
                 }
-                break;
+                else
+                    break;
             }
             catch (Exception e)
             {
@@ -128,19 +144,26 @@ public class Main
 
         x -= 1;
         y -= 1;
-        Punto p = new Punto(x,y);
-        
         
         if ("1".equals(op2))
         {
-            //p1.disparonormal(p2.gettablero, p);
-            p2.actualizarFlota();
+            Punto p = new Punto(x,y);
+            p1.disparar(p1.getArmnormal(), p2.getTablero(), p);
         }
         else
         {
-            //p1.disparoespecial(p2.gettablero, p);
-            p2.actualizarFlota();
+            if (x==0)
+                x+=1;
+            if (x==9)
+                x-=1;
+            if (y==0)
+                y+=1;
+            if (y==9)
+                y-=1;
+            Punto p =new Punto(x,y);
+            p1.disparar(p1.getArmespecial(), p2.getTablero(), p);
         }
+        p2.actualizarFlota();
     }
     
     public static void imprimirMenu()

@@ -15,6 +15,7 @@ public class Submarino extends Barco
     public Submarino()
     {
         this.numeroDeCasillas = 1;
+        this.coordenadas = new Punto[this.numeroDeCasillas];
     }
     
 }

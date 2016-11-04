@@ -15,6 +15,7 @@ public class Battleship extends Barco
     public Battleship()
     {
         this.numeroDeCasillas = 4;
+        this.coordenadas = new Punto[this.numeroDeCasillas];
     }
    
 }

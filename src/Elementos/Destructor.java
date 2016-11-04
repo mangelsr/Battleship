@@ -15,6 +15,7 @@ public class Destructor extends Barco
     public Destructor()
     {
         this.numeroDeCasillas = 2;
+        this.coordenadas = new Punto[this.numeroDeCasillas];
     }
     
 }

@@ -22,7 +22,15 @@ public class ArmaEspecial extends Arma
     {
         if (this.numeroMuniciones > 0)
         {
-            
+            //Cambiar esto
+            for(int i=-1; i<=1; i++)
+            {
+                for (int j=-1; j<=1; j++)
+                {
+                    if (! t.tablero[p.coorX+i][p.coorY+j].equals("0"))
+                        t.tablero[p.coorX+i][p.coorY+j] = "\u001B[31m-\u001B[0m"; 
+                }
+            }
             this.numeroMuniciones -= 1;
         }
         else

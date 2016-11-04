@@ -15,6 +15,7 @@ public class Crucero extends Barco
     public Crucero()
     {
         this.numeroDeCasillas = 3;
+        this.coordenadas = new Punto[this.numeroDeCasillas];
     }
     
 }

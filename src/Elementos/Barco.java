@@ -14,9 +14,10 @@ import java.util.Random;
 public class Barco
 {
     protected Punto coordenadaInicial;
+    protected Punto[] coordenadas;
     protected int numeroDeCasillas;
-    protected int casillasAtacadas;
     protected int orientacion;
+    protected boolean destruido;
     
     private final Random rd = new Random();
     
@@ -30,7 +31,19 @@ public class Barco
         this.coordenadaInicial = new Punto(rd.nextInt(10), rd.nextInt(10));
         this.orientacion = rd.nextInt(2);
     }
-
+    
+    public void verificarCasillasAtacadas(Tablero t)
+    {
+        int casillasAtacadas =0;
+        for (int i=0; i<numeroDeCasillas; i++)
+        {
+            if(t.tablero[coordenadas[i].coorX]
+                    [coordenadas[i].coorY].equals("\u001B[31m-\u001B[0m"))
+                casillasAtacadas += 1;
+        }
+        if (casillasAtacadas == numeroDeCasillas)
+            this.destruido = true;
+    }
     
     public Punto getCoordenadaInicial() {
         return coordenadaInicial;
