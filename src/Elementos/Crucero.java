@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Paquete que contiene las distintas clases que componen el juego principal
+ * Contiene a: Armas, ArmaEspecial, ArmaNormal, Barco, Battleship, Crucero, Destructor, Submarino, Jugador, Punto, Tablero.
  */
 package Elementos;
 
 /**
- *
- * @author Usuario
+ * Clase hija de Barco la cual tendra 3 casillas como tamaño en el tablero.
+ * @author Miguel Sanchez
+ * @author Lucio Arias
  */
 public class Crucero extends Barco
 {
+    /**
+     * Constructor de Submarino por defecto con los valores iniciales de su padre Barco 
+     * mas un numero de casillas y las coordenadas iniciales que tendra en el tablero.
+     */
     
     public Crucero()
     {

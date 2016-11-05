@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Paquete que contiene las distintas clases que componen el juego principal
+ * Contiene a: Armas, ArmaEspecial, ArmaNormal, Barco, Battleship, Crucero, Destructor, Submarino, Jugador, Punto, Tablero.
  */
 package Elementos;
 
@@ -9,18 +8,23 @@ import java.util.Random;
 
 /**
  * La clase Tablero es una clase que contiene a los barcos de cada jugador
- * dentro de una matriz numerica de tamaño 10x10.
- * @author Miguel
+ * dentro de una matriz de tamaño 10x10
+ * @author Miguel Sanchez
+ * @author Lucio Arias
  */
 public class Tablero
 {
+    /**
+     * Varible Protegida: tablero bidimensional de 10x10
+     * Variable privada final: rd Numero Random
+     */
     protected String[][] tablero = new String[10][10];
     private final Random rd = new Random();
     
     
     /**
-     * El constructor de la clase Tablero inicializa la matriz numerica de 10x10
-     * que la llena de ceros.
+     * El constructor de la clase Tablero inicializa la matriz de 10x10
+     * que llena con la letra x.
      */
     public Tablero()
     {
@@ -28,15 +32,15 @@ public class Tablero
         {
             for(int j=0; j<=9; j++)
             {
-                tablero[i][j] = "0";
+                tablero[i][j] = "x";
             }
         }
     }
     
     /**
-     * La funcion imprimirTablero es la encargada de imprimir la matriz numerica
-     * que se inicializo con ceros en el constructor, tambien le da el formato
-     * de salida para que el usuario distinga las coordenadas.
+     * La funcion imprimirTablero es la encargada de imprimir la matriz
+     * que se inicializo con letras x en el constructor, tambien le da el formato
+     * de salida para que el usuario distinga las coordenadas
      */
     public void imprimirTablero()
     {
@@ -64,8 +68,6 @@ public class Tablero
      * La funcion ubicarBarco es la encargada de ubicar los barcos en la matriz
      * @param b Recive como parametro un Barco
      */
-    
-    
     public void ubicarBarco(Barco b)
     {
         switch(b.orientacion)
@@ -79,11 +81,11 @@ public class Tablero
                         for (int c=-1; c<=b.numeroDeCasillas ;c++)
                         {
                             if (tablero[b.coordenadaInicial.coorX-1]
-                                    [b.coordenadaInicial.coorY+c].equals("0") &&
+                                    [b.coordenadaInicial.coorY+c].equals("x") &&
                                     tablero[b.coordenadaInicial.coorX+1]
-                                    [b.coordenadaInicial.coorY+c].equals("0") &&
+                                    [b.coordenadaInicial.coorY+c].equals("x") &&
                                     tablero[b.coordenadaInicial.coorX]
-                                    [b.coordenadaInicial.coorY+c].equals("0"))
+                                    [b.coordenadaInicial.coorY+c].equals("x"))
                                 valido += 1;
                             else
                                 break;
@@ -98,7 +100,7 @@ public class Tablero
                                 b.coordenadas[c] = p;
                                 tablero[b.coordenadaInicial.coorX]
                                         [b.coordenadaInicial.coorY+c] = 
-                                        "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";
+                                        "\u001B[32mO\u001B[0m";
                             }
                             break;
                         }
@@ -123,11 +125,11 @@ public class Tablero
                         {
                             
                             if (tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY-1].equals("0") &&
+                                    [b.coordenadaInicial.coorY-1].equals("x") &&
                                     tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY+1].equals("0") &&
+                                    [b.coordenadaInicial.coorY+1].equals("x") &&
                                     tablero[b.coordenadaInicial.coorX+c]
-                                    [b.coordenadaInicial.coorY].equals("0") )
+                                    [b.coordenadaInicial.coorY].equals("x") )
                                 valido += 1;
                             else
                                 break;
@@ -142,7 +144,7 @@ public class Tablero
                                 b.coordenadas[c] = p;
                                 tablero[b.coordenadaInicial.coorX+c]
                                         [b.coordenadaInicial.coorY] = 
-                                        "\u001B[32m"+String.valueOf(b.numeroDeCasillas)+"\u001B[0m";                    
+                                        "\u001B[32mO\u001B[0m";                    
                             }
                             break;
                         }
